@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "app"
+version = "0.1.0"
+description = ""
+authors = ["keven silva <francisco.keven.almeida07@aluno.ifce.edu.br>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+PyOpenGL = "^3.1.6"
+numpy = "^1.23.3"
+glfw = "^2.5.5"
+pygame = "^2.1.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

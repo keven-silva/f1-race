@@ -1,2 +1,3 @@
-# f1-race
-This project is a college computer graphics work
+# Maintener
+## Nome: Francisco Keven Almeida da Silva
+## Matricula: 500699
