@@ -18,14 +18,14 @@ def ocioso():
         app.road_speed -= 0.0003                                  # Decremento para uso na movimentação da faixa central
     else:
         app.road_speed = 0
-    # app.angle += 0.01
+    app.angle += 0.1
     glutPostRedisplay()
 
 def draw():
     scenery = Scenery()
     glClear(GL_COLOR_BUFFER_BIT)                                # Sempre antes de desenhar qualquer coisa, deve-se limpar o frame-buffer
 
-    model = OBJ('/home/keven/Cursos/CG/T1-F1_Racer/objects/F1_car.obj')
+    model = OBJ('/home/keven/Cursos/CG/f1-race/objects/F1_car.obj')
     box = model.box()
     size = [box[1][i] - box[0][i] for i in range(3)]
     max_size = max(size)
@@ -42,7 +42,7 @@ def draw():
     # gluLookAt(0, -8, 0, 0, 0.086, 0, 0, 0, 1)
 
     glPushMatrix()                                              #Salvando matriz
-   
+    glTranslatef(app.index_car, 0.0, 0.0)    
     scenery.fisrt_design(20, 10)                                # Inicializando cenário
     scenery.road_design(20, 10)
 
@@ -54,14 +54,14 @@ def draw():
     scenery.road_lane_center(2, 1)
     glPopMatrix()
 
-    glPushMatrix()
-    # glRotate(app.angle, 0, 1, 0)                                # Rotação para mostrar o carro
-    # glLoadIdentity()
-    glTranslatef(app.index_car, 0, 0)                          # Definindo local da pespectiva
-    glScale(scale - 0.5, scale - 0.5, scale - 0.5)
-    model.render()                                              # Rederizando o carro
     glPopMatrix()
     
+    glPushMatrix()
+    # # glRotate(app.angle, 0, 1, 0)                                # Rotação para mostrar o carro
+    # gluLookAt(5,5,1,app.angle,0,0,0,0,1)                          # Definindo local da pespectiva
+    # # glLoadIdentity()
+    glScale(scale - 0.5, scale - 0.5, scale - 0.5)
+    model.render()                                              # Rederizando o carro
     glPopMatrix()
 
     glFlush() #Todas as instruções anteriores apenas indicaram o que deve ser feito. Essa é a ordem pra GPU redesenhar com as informações enviadas
