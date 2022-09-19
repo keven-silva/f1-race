@@ -7,9 +7,6 @@ import app
 import pygame
 
 
-def idle(value:int):
-    glutPostRedisplay()
-
 def main():
     pygame.init()
     glutInit()
@@ -24,7 +21,6 @@ def main():
     glutIdleFunc(ocioso)
     # glutKeyboardFunc(keyboard_ASCII)
     glutSpecialFunc(special_keyboard)
-    glutTimerFunc((1000//app.fps), idle, 0)
 
     glutMainLoop()
 

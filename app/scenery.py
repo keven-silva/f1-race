@@ -10,13 +10,21 @@ class Scenery():
         pass    
 
     def fisrt_design(self, zone_x, zone_y):
-        #Road background
+        # Road background
         glColor3f(0.2, 0.36, 0.1)
         glBegin(GL_QUADS) #a cada quatro pontos, conecte-os em quadriláteros
         glVertex3f(-zone_x, -1, 0)
         glVertex3f(zone_x, -1, 0)
         glVertex3f(zone_x, zone_y + 15, -50)
         glVertex3f(-zone_x, zone_y + 15, -50)
+        glEnd()
+        #horizonte lane
+        glColor3f(0.35, 0.2, 0.2)
+        glBegin(GL_QUADS) #a cada quatro pontos, conecte-os em quadriláteros
+        glVertex3f(-zone_x,  4.12, 0)
+        glVertex3f(zone_x,  4.12, 0)
+        glVertex3f(zone_x, zone_y - 1, -50)
+        glVertex3f(-zone_x, zone_y - 1, -50)
         glEnd()
 
         # tree(20, 20)   
@@ -61,13 +69,30 @@ class Scenery():
         glVertex3f(road_x - 16.9, road_y + 15, -50)
         glEnd()
  
-    def road_lane_center(self, index_x, lane_y):
+    def road_lane_center(self):
+        #road lane 1
         glColor3f(1.0, 1.0, 1.0)
         glBegin(GL_QUADS)
-        glVertex3f(index_x - 2.1, lane_y - 5, 0)
-        glVertex3f(index_x - 1.9, lane_y - 5, 0)
-        glVertex3f(index_x - 1.9, lane_y - 2, -50)
-        glVertex3f(index_x - 2.1, lane_y - 2, -50)
+        glVertex3f(-0.04, 0, 0)
+        glVertex3f(0.04, 0, 0)
+        glVertex3f(0.04, 0.5, -0.5)
+        glVertex3f(-0.04, 0.5, -0.5)
+        glEnd()
+        #road lane 2
+        glColor3f(1.0, 1.0, 1.0)
+        glBegin(GL_QUADS)
+        glVertex3f(-0.04, 2, -2)
+        glVertex3f(0.04, 2, -2)
+        glVertex3f(0.04, 2.5, -2.5)
+        glVertex3f(-0.04, 2.5, -2.5)
+        glEnd()
+        #road lane 3
+        glColor3f(1.0, 1.0, 1.0)
+        glBegin(GL_QUADS)
+        glVertex3f(-0.04, 4, -4)
+        glVertex3f(0.04, 4, -4)
+        glVertex3f(0.04, 4.5, -4.5)
+        glVertex3f(-0.04, 4.5, -4.5)
         glEnd()
 
     def hill(self):
