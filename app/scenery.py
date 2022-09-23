@@ -13,21 +13,23 @@ class Scenery():
         # Road background
         glColor3f(0.2, 0.36, 0.1)
         glBegin(GL_QUADS) #a cada quatro pontos, conecte-os em quadriláteros
-        glVertex3f(-zone_x, -1, 0)
-        glVertex3f(zone_x, -1, 0)
-        glVertex3f(zone_x, zone_y + 15, -50)
-        glVertex3f(-zone_x, zone_y + 15, -50)
+        glVertex3f(-zone_x - 30, -zone_y, 0)
+        glVertex3f(zone_x + 30, -zone_y, 0)
+        glVertex3f(zone_x + 30, zone_y + 50, 0)
+        glVertex3f(-zone_x - 30, zone_y + 50, 0)
         glEnd()
         #horizonte lane
         glColor3f(0.35, 0.2, 0.2)
         glBegin(GL_QUADS) #a cada quatro pontos, conecte-os em quadriláteros
-        glVertex3f(-zone_x,  4.12, 0)
-        glVertex3f(zone_x,  4.12, 0)
-        glVertex3f(zone_x, zone_y - 1, -50)
-        glVertex3f(-zone_x, zone_y - 1, -50)
+        glVertex3f(-zone_x - 30,  zone_y + 50, 0)
+        glVertex3f(zone_x + 30,  zone_y + 50, 0)
+        glVertex3f(zone_x + 30, zone_y + 60, 0)
+        glVertex3f(-zone_x - 30, zone_y + 60, 0)
         glEnd()
 
-        # tree(20, 20)   
+        self.road_design(20, 30)
+
+        tree()   
         # tree(68, 20) 
         
 
@@ -45,54 +47,86 @@ class Scenery():
     def road_design(self, road_x, road_y):
         glColor3f(0.2, 0.2, 0.2)
         glBegin(GL_QUADS) #a cada quatro pontos, conecte-os em quadriláteros
-        glVertex3f(-road_x + 17, -1, 0)
-        glVertex3f(road_x - 17, -1, 0)
-        glVertex3f(road_x - 17, road_y + 15, -50)
-        glVertex3f(-road_x + 17, road_y + 15, -50)
+        glVertex3f(-road_x + 16, -road_y, 0)
+        glVertex3f(road_x - 16, -road_y, 0)
+        glVertex3f(road_x - 16, road_y + 40, 0)
+        glVertex3f(-road_x + 16, road_y + 40, 0)
         glEnd()
 
         # Road lane left
         glColor3f(0.3, 0.0, 0.1)
         glBegin(GL_QUADS) #cada dois novos pontos são conectados aos dois últimos formando quadriláteros
-        glVertex3f(-road_x + 16.8, -1, 0)
-        glVertex3f(-road_x + 17.2, -1, 0)
-        glVertex3f(-road_x + 17.3, road_y + 15, -50)
-        glVertex3f(-road_x + 16.9, road_y + 15, -50)
+        glVertex3f(-road_x + 15, -road_y, 0)
+        glVertex3f(-road_x + 16, -road_y, 0)
+        glVertex3f(-road_x + 16, road_y + 40, 0)
+        glVertex3f(-road_x + 15, road_y + 40, 0)
         glEnd()
 
         # # Road lane right
         glColor3f(0.3, 0.0, 0.1)
         glBegin(GL_QUADS) #cada dois novos pontos são conectados aos dois últimos formando quadriláteros
-        glVertex3f(road_x - 17.2, -1, 0)
-        glVertex3f(road_x - 16.8, -1, 0)
-        glVertex3f(road_x - 17.3, road_y + 15, -50)
-        glVertex3f(road_x - 16.9, road_y + 15, -50)
+        glVertex3f(road_x - 15, -road_y, 0)
+        glVertex3f(road_x - 16, -road_y, 0)
+        glVertex3f(road_x - 16, road_y + 40, 0)
+        glVertex3f(road_x - 15, road_y + 40, 0)
         glEnd()
  
     def road_lane_center(self):
-        #road lane 1
+         #road lane -1
         glColor3f(1.0, 1.0, 1.0)
         glBegin(GL_QUADS)
-        glVertex3f(-0.04, 0, 0)
-        glVertex3f(0.04, 0, 0)
-        glVertex3f(0.04, 0.5, -0.5)
-        glVertex3f(-0.04, 0.5, -0.5)
+        glVertex3f(-0.1, -5, 0)
+        glVertex3f(0.1, -5, 0)
+        glVertex3f(0.1, -3, 0)
+        glVertex3f(-0.1, -3, 0)
         glEnd()
-        #road lane 2
+        #road lane 0
         glColor3f(1.0, 1.0, 1.0)
         glBegin(GL_QUADS)
-        glVertex3f(-0.04, 2, -2)
-        glVertex3f(0.04, 2, -2)
-        glVertex3f(0.04, 2.5, -2.5)
-        glVertex3f(-0.04, 2.5, -2.5)
+        glVertex3f(-0.1, 1, 0)
+        glVertex3f(0.1, 1, 0)
+        glVertex3f(0.1, 3, 0)
+        glVertex3f(-0.1, 3, 0)
         glEnd()
-        #road lane 3
+        # road lane 1
         glColor3f(1.0, 1.0, 1.0)
         glBegin(GL_QUADS)
-        glVertex3f(-0.04, 4, -4)
-        glVertex3f(0.04, 4, -4)
-        glVertex3f(0.04, 4.5, -4.5)
-        glVertex3f(-0.04, 4.5, -4.5)
+        glVertex3f(-0.1, 7, 0)
+        glVertex3f(0.1, 7, 0)
+        glVertex3f(0.1, 9, 0)
+        glVertex3f(-0.1, 9, 0)
+        glEnd()
+        # # road lane 2
+        glColor3f(1.0, 1.0, 1.0)
+        glBegin(GL_QUADS)
+        glVertex3f(-0.1, 13, 0)
+        glVertex3f(0.1, 13, 0)
+        glVertex3f(0.1, 15, 0)
+        glVertex3f(-0.1, 15, 0)
+        glEnd()
+        # #road lane 3
+        glColor3f(1.0, 1.0, 1.0)
+        glBegin(GL_QUADS)
+        glVertex3f(-0.1, 19, 0)
+        glVertex3f(0.1, 19, 0)
+        glVertex3f(0.1, 21, 0)
+        glVertex3f(-0.1, 21, 0)
+        glEnd()
+         # #road lane 4
+        glColor3f(1.0, 1.0, 1.0)
+        glBegin(GL_QUADS)
+        glVertex3f(-0.1, 25, 0)
+        glVertex3f(0.1, 25, 0)
+        glVertex3f(0.1, 27, 0)
+        glVertex3f(-0.1, 27, 0)
+        glEnd()
+        # #road lane 5
+        glColor3f(1.0, 1.0, 1.0)
+        glBegin(GL_QUADS)
+        glVertex3f(-0.1, 29, 0)
+        glVertex3f(0.1, 29, 0)
+        glVertex3f(0.1, 31, 0)
+        glVertex3f(-0.1, 31, 0)
         glEnd()
 
     def hill(self):
