@@ -14,11 +14,13 @@ car1 = 30
 car2 = -11
 car3 = -11
 
+# Arvore
+tree_index = 0
+
 #Pista
 road_speed = 0
 road_index = -2    # posição da pista central
 
 index_car = 0
-
-def init():
-    glClearColor(0.2, 0.5, 1.50, 1.0) #indica qual cor será usada para limpar o frame buffer (normalmente usa uma cor de background)
+# cor de fundo 
+init_color = 0.0

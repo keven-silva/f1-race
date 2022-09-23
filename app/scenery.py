@@ -1,7 +1,6 @@
 from OpenGL.GL import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
-from app.components import tree
 
 
 class Scenery():
@@ -27,11 +26,7 @@ class Scenery():
         glVertex3f(-zone_x - 30, zone_y + 60, 0)
         glEnd()
 
-        self.road_design(20, 30)
-
-        tree()   
-        # tree(68, 20) 
-        
+        self.road_design(20, 30) 
 
     # #Road sky
     def road_sky(self, sky_x, sky_y):

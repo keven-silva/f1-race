@@ -2,7 +2,7 @@ from OpenGL.GL import *
 from OpenGL.GLUT import *
 from OpenGL.GLU import *
 from app.scenery import Scenery
-
+from app.components import tree
 from OBJFileLoader import OBJ
 
 import app
@@ -26,11 +26,17 @@ def draw():
     
     glMatrixMode(GL_MODELVIEW)  
     glLoadIdentity()                          
-    gluLookAt(0, -10, 4, 0, 0, 0, 0, -1, 1)                     # Configurando posição da câmera
+    gluLookAt(0, -10, 3, 0, 0, 0, 0, -1, 1)                     # Configurando posição da câmera
 
     glPushMatrix()                                              #Salvando matriz
     glTranslatef(app.index_car, 0.0, 0.0)    
     scenery.fisrt_design(20, 20)                                # Inicializando cenário
+
+    glPushMatrix()
+    glTranslatef(0, app.tree_index, 0)                         # Movimento de faixas centrais
+    # Arvore
+    tree()   
+    glPopMatrix()
 
     glPushMatrix()
     glTranslatef(0, app.road_index, 0)                         # Movimento de faixas centrais
