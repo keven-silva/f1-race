@@ -10,13 +10,13 @@ import pygame, time, threading
 
 
 def change_to_day():
-        app.init_color -= 0.01
+        app.init_color -= 0.03
 
         if app.init_color <= 0:
             app.day = True
 
 def change_to_night():
-        app.init_color += 0.01
+        app.init_color += 0.03
 
         if app.init_color >= 1.5:
             app.day = False
@@ -79,9 +79,6 @@ def main():
     glutKeyboardFunc(keyboard_ASCII)
     glutSpecialFunc(special_keyboard)
     glutTimerFunc(1000//app.FPS, timer, 0)
-
-    # task = threading.Thread(target=change_background, name='task1', daemon=True)
-    # task.start()
     
     glutMainLoop()
 

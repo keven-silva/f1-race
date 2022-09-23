@@ -20,6 +20,9 @@ tree_index = 0
 # Estado do dia
 day = True
 
+#camera
+cam_x = 0
+cam_at = 0
 #Pista
 road_speed = 0
 road_index = -2    # posição da pista central

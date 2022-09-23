@@ -22,7 +22,7 @@ def draw():
     # Carros opositores
     oposite_car01 = OBJ('/home/keven/Cursos/CG/f1-race/objects/oposite_cars/red_car.obj')
     oposite_car02 = OBJ('/home/keven/Cursos/CG/f1-race/objects/oposite_cars/roxo_car.obj')
-    oposite_car03 = OBJ('/home/keven/Cursos/CG/f1-race/objects/oposite_cars/yellow_car.obj')
+    oposite_car03 = OBJ('/home/keven/Cursos/CG/f1-race/objects/oposite_cars/gray_car.obj')
 
 
     glMatrixMode(GL_PROJECTION)                                 # Comandos que determinam o tipo de visualização
@@ -31,10 +31,9 @@ def draw():
     
     glMatrixMode(GL_MODELVIEW)  
     glLoadIdentity()                          
-    gluLookAt(0, -10, 3, 0, 0, 0, 0, -1, 1)                     # Configurando posição da câmera
+    gluLookAt(app.cam_x, -10, 3, app.cam_x, 2, 0, 0, -1, 1)                     # Configurando posição da câmera
 
     glPushMatrix()                                              #Salvando matriz
-    glTranslatef(app.index_car, 0.0, 0.0)    
     scenery.fisrt_design(20, 20)                                # Inicializando cenário
 
     glPushMatrix()
@@ -57,14 +56,14 @@ def draw():
 
     #carro 02
     glPushMatrix()
-    glTranslatef(3, app.car2, 0)                         # Movimento de faixas centrais
+    glTranslatef(2.5, app.car2, 0)                         # Movimento de faixas centrais
     glScale(0.5, 0.5, 0.5)
     oposite_car02 .render()
     glPopMatrix()
 
     #carro 03
     glPushMatrix()
-    glTranslatef(-3, app.car3, 0)                         # Movimento de faixas centrais
+    glTranslatef(-2.5, app.car3, 0)                         # Movimento de faixas centrais
     glScale(0.5, 0.5, 0.5)
     oposite_car03 .render()
     glPopMatrix()
@@ -73,7 +72,7 @@ def draw():
     
     glPushMatrix()
     # # glRotate(app.angle, 0, 1, 0)                                # Rotação para mostrar o carro
-    glTranslatef(0, -7, 0) 
+    glTranslatef(app.index_car, -7, 0) 
     glScale(0.5, 0.5, 0.5)
     car.render()                                              # Rederizando o carro
     glPopMatrix()
