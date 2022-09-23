@@ -8,9 +8,14 @@ from OBJFileLoader import OBJ
 import app
 
 
+def init():
+    glClearColor((0.2 - app.init_color), (0.5 - app.init_color), (1.50 - app.init_color), 1.0) #indica qual cor será usada para limpar o frame buffer (normalmente usa uma cor de background)
+
 def draw():
+    init()
     scenery = Scenery()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)                                # Sempre antes de desenhar qualquer coisa, deve-se limpar o frame-buffer
+    
     # Carro principal
     car = OBJ('/home/keven/Cursos/CG/f1-race/objects/main_car/blue_car.obj')
 
