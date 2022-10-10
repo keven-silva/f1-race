@@ -1,12 +1,9 @@
-from pickle import FALSE
 from OpenGL.GL import *
 from OpenGL.GLUT import *
-from OpenGL.GLU import *
 from app.draw import draw 
-from app.keyboard import special_keyboard, keyboard_ASCII
+from app.keyboard import keyboard_axis, special_keyboard
 import app
 import pygame, time, threading
-
 
 
 def change_to_day():
@@ -26,9 +23,11 @@ def factory_day():
         while app.day:
             time.sleep(0.5)
             change_to_night()
+
         while app.day == False:
             time.sleep(0.5)
             change_to_day()
+
         time.sleep(2)
 
 def timer(value:int):
@@ -36,32 +35,42 @@ def timer(value:int):
     glEnable(GL_DEPTH_TEST)
 
     app.road_index -= app.road_speed   
-    app.tree_index -= app.road_speed
+    app.board_index -= app.road_speed                             # Movimentação da placa
 
     if app.road_index <= -10:
         app.road_index = -3                                       # Caso o valor da faixa central estiver na posição -10 do eixo y retorna para o valor "altura - 20"
     
-    if app.tree_index <= -28:
-        app.tree_index = 20 
+    if app.board_index <= 2:
+        app.board_index = 60 
     
-    if app.road_speed > 0: 
-        if app.car3 <= 20 and app.car3 >= -1:    
-            app.car1 = 50
-        if app.car1 <= 20 and app.car1 >= -1:    
-            app.car2 = 50
-        if app.car2 <= 20 and app.car2 >= -1:      
-            app.car3 = 50
+    # Movimentação dos carros
+    if app.car1 <= 100:
+        app.car1 += 1
+        if app.road_speed > 0 and app.car1 >= 0:
+            app.car1 -= app.road_speed
+        if app.car1 >= 100: 
+            app.car1 = 0
+
+    if app.car2 <= 100:    
+        app.car2 += 1.4
+        if app.road_speed > 0 and app.car2 >= 0:
+            app.car2 -= app.road_speed
+        if app.car2 >= 100: 
+            app.car2 = 0
+
+    if app.car3 <= 100:    
+        app.car3 += 1.6
+        if app.road_speed > 0 and app.car3 >= 0:
+            app.car3 -= app.road_speed
+        if app.car3 >= 100: 
+            app.car3 = 0
 
     if app.road_speed > 0.05:
         app.road_speed -= 0.03                                  # Decremento para uso na movimentação da faixa central
-        app.car1 -= 0.4
-        app.car2 -= 0.6
-        app.car3 -= 0.8
     else:
         app.road_speed = 0
 
     glutPostRedisplay()
-
 
 def main():
     pygame.init()
@@ -74,9 +83,9 @@ def main():
     glutInitWindowPosition(200, 50)
     glutInitWindowSize(app.HEIGHT, app.WIDTH)
     glutCreateWindow("F1 Race")
-    
+     
     glutDisplayFunc(draw)
-    glutKeyboardFunc(keyboard_ASCII)
+    glutKeyboardFunc(keyboard_axis)
     glutSpecialFunc(special_keyboard)
     glutTimerFunc(1000//app.FPS, timer, 0)
     
