@@ -1,53 +1,11 @@
 from OpenGL.GL import *
 from OpenGL.GLUT import *
-from app.draw import draw 
+from app.draw import draw_glut
 from app.keyboard import keyboard_axis, special_keyboard
-from app.utils.components import factory_day
+from app.utils.components import factory_day, timer_glut
 import app
 import pygame, threading
 
-
-def timer(value:int):
-    glutTimerFunc(1000//app.FPS, timer, 0)
-    glEnable(GL_DEPTH_TEST)
-
-    app.road_index -= app.road_speed   
-    app.board_index -= app.road_speed                             # Movimentação da placa
-
-    if app.road_index <= -10:
-        app.road_index = -3                                       # Caso o valor da faixa central estiver na posição -10 do eixo y retorna para o valor "altura - 20"
-    
-    if app.board_index <= 2:
-        app.board_index = 60 
-    
-    # Movimentação dos carros
-    if app.car1 <= 100:
-        app.car1 += 1
-        if app.road_speed > 0 and app.car1 >= 0:
-            app.car1 -= app.road_speed
-        if app.car1 >= 100: 
-            app.car1 = 0
-
-    if app.car2 <= 100:    
-        app.car2 += 1.4
-        if app.road_speed > 0 and app.car2 >= 0:
-            app.car2 -= app.road_speed
-        if app.car2 >= 100: 
-            app.car2 = 0
-
-    if app.car3 <= 100:    
-        app.car3 += 1.6
-        if app.road_speed > 0 and app.car3 >= 0:
-            app.car3 -= app.road_speed
-        if app.car3 >= 100: 
-            app.car3 = 0
-
-    if app.road_speed > 0.05:
-        app.road_speed -= 0.03                                  # Decremento para uso na movimentação da faixa central
-    else:
-        app.road_speed = 0
-
-    glutPostRedisplay()
 
 def main():
     pygame.init()
@@ -61,10 +19,10 @@ def main():
     glutInitWindowSize(app.HEIGHT, app.WIDTH)
     glutCreateWindow("F1 Race")
      
-    glutDisplayFunc(draw)
+    glutDisplayFunc(draw_glut)
     glutKeyboardFunc(keyboard_axis)
     glutSpecialFunc(special_keyboard)
-    glutTimerFunc(1000//app.FPS, timer, 0)
+    glutTimerFunc(1000//app.FPS, timer_glut, 0)
     
     glutMainLoop()
 

@@ -1,2 +1,3 @@
 pyopengl
 pygame
+PyOpenGL-accelerate

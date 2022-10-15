@@ -1,8 +1,8 @@
 from OpenGL.GL import *
 from OpenGL.GLUT import *
 from app.utils.colors import *
-from OBJFileLoader import OBJ
-import random, time, app
+from OBJFileLoader.objloader import OBJ
+import random, time, app, pygame as pg
 
 
 def board()->None:
@@ -77,3 +77,116 @@ def nuvens(vertex:list, color:list, x_near:int, x_far)->None:
                 glPopMatrix()
     except:
         raise ValueError('Error ao tentar gerar as nuvens')
+
+def change_to_day():
+        app.init_color -= 0.03
+
+        if app.init_color <= 0:
+            app.day = True
+
+def change_to_night():
+        app.init_color += 0.03
+
+        if app.init_color >= 1.5:
+            app.day = False
+
+def factory_day():
+    while True:
+        while app.day:
+            time.sleep(0.5)
+            change_to_night()
+
+        while app.day == False:
+            time.sleep(0.5)
+            change_to_day()
+
+        time.sleep(2)
+
+
+def timer_glut(value:int):
+    glutTimerFunc(1000//app.FPS, timer_glut, 0)
+    glEnable(GL_DEPTH_TEST)
+
+    app.road_index -= app.road_speed   
+    app.board_index -= app.road_speed                             # Movimentação da placa
+
+    if app.road_index <= -10:
+        app.road_index = -3                                       # Caso o valor da faixa central estiver na posição -10 do eixo y retorna para o valor "altura - 20"
+    
+    if app.board_index <= 2:
+        app.board_index = 100 
+    
+    # Movimentação dos carros
+    if app.car1 <= 100:
+        app.car1 += 1
+        if app.road_speed > 0 and app.car1 >= 0:
+            app.car1 -= app.road_speed
+        if app.car1 >= 100: 
+            app.car1 = 0
+
+    if app.car2 <= 100:    
+        app.car2 += 1.4
+        if app.road_speed > 0 and app.car2 >= 0:
+            app.car2 -= app.road_speed
+        if app.car2 >= 100: 
+            app.car2 = 0
+
+    if app.car3 <= 100:    
+        app.car3 += 1.6
+        if app.road_speed > 0 and app.car3 >= 0:
+            app.car3 -= app.road_speed
+        if app.car3 >= 100: 
+            app.car3 = 0
+
+    if app.road_speed > 0.05:
+        app.road_speed -= 0.03                                  # Decremento para uso na movimentação da faixa central
+    else:
+        app.road_speed = 0
+
+    glutPostRedisplay()
+
+def timer_pygame():
+    glEnable(GL_DEPTH_TEST)
+
+    app.road_index -= app.road_speed   
+    app.board_index -= app.road_speed                             # Movimentação da placa
+
+    if app.road_index <= -10:
+        app.road_index = -3                                       # Caso o valor da faixa central estiver na posição -10 do eixo y retorna para o valor "altura - 20"
+    
+    if app.board_index <= 2:
+        app.board_index = 100 
+    
+    # Movimentação dos carros
+    if app.car1 <= 100:
+        app.car1 += 1
+        if app.road_speed > 0 and app.car1 >= 0:
+            app.car1 -= app.road_speed
+        if app.car1 >= 100: 
+            app.car1 = 0
+
+    if app.car2 <= 100:    
+        app.car2 += 1.4
+        if app.road_speed > 0 and app.car2 >= 0:
+            app.car2 -= app.road_speed
+        if app.car2 >= 100: 
+            app.car2 = 0
+
+    if app.car3 <= 100:    
+        app.car3 += 1.6
+        if app.road_speed > 0 and app.car3 >= 0:
+            app.car3 -= app.road_speed
+        if app.car3 >= 100: 
+            app.car3 = 0
+
+    if app.road_speed > 0.1:
+        app.road_speed -= 0.07                                  # Decremento para uso na movimentação da faixa central
+    else:
+        app.road_speed = 0
+
+def sound_pygame():
+    while True:
+        sound = pg.mixer.Sound('sounds/rock01.aiff')
+        sound.play()
+        sound.set_volume(0.1)
+        time.sleep(29)

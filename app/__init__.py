@@ -1,5 +1,5 @@
 #Velocidade do jogo
-FPS = 80          # frames por segundos
+FPS = 100          # frames por segundos
 
 # janela
 WIDTH =  960      # largura da janela
@@ -18,8 +18,8 @@ day = True
 
 #camera
 cam_x = 0
-cam_y = -9
-cam_z = 6
+cam_y = -1
+cam_z = 10
 cam_at_x = 0
 cam_at_y = 64
 

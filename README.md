@@ -3,6 +3,7 @@
 
 ## Dependências
 * pyopengl
+*
 * pygame
 * freeglut3
 
@@ -13,6 +14,7 @@
 ```
 pip install -r requirements.txt 
 ```
+## Usando as libs Glut e Opengl
 2. Instale a lib freeglut3
 ```
 sudo apt install freeglut3
@@ -20,4 +22,9 @@ sudo apt install freeglut3
 3. Execute o arquivo `main.py`
 ```
 python3 main.py
+```
+## Usando as libs pygame e Opengl
+2. Execute o arquivo `app.py`
+```
+python3 app.py
 ```

@@ -75,3 +75,29 @@ def keyboard_axis( key, x, y):
         app.at -= 1
     
     glutPostRedisplay()
+
+
+def pygame_keyboard(key_l, key_r, key_up, key_down):
+    '''
+        Função indicada pra GLUT, que será executada sempre que um evento de teclado,
+        a partir de uma tecla especial é criado
+    '''
+    if(key_l):
+        if app.index_car > -8:
+            app.index_car -= 0.5
+            app.cam_x -= 0.5
+            app.cam_at_x -= 0.5
+
+    elif(key_r): 
+        if app.index_car < 8:
+            app.index_car += 0.5  
+            app.cam_x += 0.5
+            app.cam_at_x += 0.5
+
+    if(key_down): 
+        if app.road_speed > 0.3:
+            app.road_speed -= 0.1
+
+    elif(key_up): 
+        if app.road_speed >= 0 and app.road_speed <= 2:
+            app.road_speed += 0.5
