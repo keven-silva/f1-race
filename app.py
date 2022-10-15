@@ -1,10 +1,9 @@
-from curses import KEY_LEFT, window
 from OpenGL.GL import *
 from OpenGL.GLU import *
 from pygame.locals import *
 from app.draw import draw_pygame
 from app.keyboard import pygame_keyboard
-from app.utils.components import factory_day, timer_pygame, sound_pygame
+from app.utils.components import factory_day, timer_pygame, car_accelerate_sound, background_sound
 import app
 import pygame as pg, threading
 
@@ -17,12 +16,15 @@ def main():
     clock = pg.time.Clock()
 
     task = threading.Thread(target=factory_day, name='task1', daemon=True)
-    sound = threading.Thread(target=sound_pygame, name='sound', daemon=True)
+    sound = threading.Thread(target=background_sound, name='background_sound', daemon=True)
+
     task.start()
     sound.start()
-    
+    play = True
+
     while True:
         clock.tick(app.FPS)
+        
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 pg.quit()
@@ -36,6 +38,9 @@ def main():
             key_down = pg.key.get_pressed()[pg.K_DOWN]
 
             pygame_keyboard(key_l, key_r, key_up, key_down)
+
+        if app.road_speed > 0:
+            car_accelerate_sound()
 
         draw_pygame()
         timer_pygame()

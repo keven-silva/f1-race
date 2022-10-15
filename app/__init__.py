@@ -1,5 +1,5 @@
 #Velocidade do jogo
-FPS = 100          # frames por segundos
+FPS = 160          # frames por segundos
 
 # janela
 WIDTH =  960      # largura da janela

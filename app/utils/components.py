@@ -184,9 +184,14 @@ def timer_pygame():
     else:
         app.road_speed = 0
 
-def sound_pygame():
+def background_sound():
     while True:
         sound = pg.mixer.Sound('sounds/rock01.aiff')
         sound.play()
-        sound.set_volume(0.1)
+        sound.set_volume(0.05)
         time.sleep(29)
+
+def car_accelerate_sound():
+    sound = pg.mixer.Sound('sounds/car_acelerando.mp3')
+    sound.play()
+    sound.set_volume(0.5)
