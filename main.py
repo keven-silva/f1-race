@@ -2,33 +2,10 @@ from OpenGL.GL import *
 from OpenGL.GLUT import *
 from app.draw import draw 
 from app.keyboard import keyboard_axis, special_keyboard
+from app.utils.components import factory_day
 import app
-import pygame, time, threading
+import pygame, threading
 
-
-def change_to_day():
-        app.init_color -= 0.03
-
-        if app.init_color <= 0:
-            app.day = True
-
-def change_to_night():
-        app.init_color += 0.03
-
-        if app.init_color >= 1.5:
-            app.day = False
-
-def factory_day():
-    while True:
-        while app.day:
-            time.sleep(0.5)
-            change_to_night()
-
-        while app.day == False:
-            time.sleep(0.5)
-            change_to_day()
-
-        time.sleep(2)
 
 def timer(value:int):
     glutTimerFunc(1000//app.FPS, timer, 0)
