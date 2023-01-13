@@ -7,7 +7,7 @@ Jogo desenvolvido em python no decorrer da disciplina de computação gráfica n
 * Manipulação de input do teclado
 
 ## Maintener
-## Nome: Francisco Keven Almeida da Silva
+Keven Silva
 
 ## Dependências
 * pyopengl
