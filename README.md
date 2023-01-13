@@ -1,9 +1,16 @@
-# Maintener
+# F1 Race
+Jogo desenvolvido em python, no decorrer da disciplina de computação gráfica na Universidade Federal do Ceará (UFC).
+
+## Funcionalidades
+* Carregamento de áudio
+* Leitura de arquivos ```.obj```
+* Manipulação de input do teclado
+
+## Maintener
 ## Nome: Francisco Keven Almeida da Silva
-## Matricula: 500699
+
 ## Dependências
 * pyopengl
-*
 * pygame
 * freeglut3
 
