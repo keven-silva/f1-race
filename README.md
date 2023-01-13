@@ -1,5 +1,5 @@
 # F1 Race
-Jogo desenvolvido em python, no decorrer da disciplina de computação gráfica na Universidade Federal do Ceará (UFC).
+Jogo desenvolvido em python no decorrer da disciplina de computação gráfica na Universidade Federal do Ceará (UFC).
 
 ## Funcionalidades
 * Carregamento de áudio
