@@ -14,8 +14,6 @@ Jogo desenvolvido em python no decorrer da disciplina de computação gráfica n
 * pygame
 * freeglut3
 
-## Link do video
-[Video F1-Race](https://youtu.be/uZwmv6KKF18)
 ## Instalar as dependências
 1. Instale as libs do requirements.txt
 ```
